@@ -19,26 +19,31 @@ module Codebreaker
     end
 
     describe "#guess" do
-      context "with no matches" do  
+      it "returns error if invalid guess" do
+        game.start('1234')
+        output.should_receive(:puts).with('All your base are belong to us. Guess again')
+        game.guess('abcd')
+      end
 
-        it "returns error if invalid guess" do
-          game.start('1234')
-          output.should_receive(:puts).with('All your base are belong to us. Guess again')
-          game.guess('abcd')
-        end
+      it "returns a mark of ''" do
+        game.start('1234')
+        output.should_receive(:puts).with('')
+        game.guess('5555')
+      end
+    end
 
-        it "returns a mark of ''" do
-          game.start('1234')
-          output.should_receive(:puts).with('')
-          game.guess('5555')
-        end
+    describe "#win" do
+      it "informs user of correct guess" do
+        game.start('1234')
+        output.should_receive(:puts).with('++++')
+        output.should_receive(:puts).with('You have disarmed the bomb')
+        game.guess('1234')
+      end
+    end
 
-        it "informs user of correct guess" do
-          game.start('1234')
-          output.should_receive(:puts).with('++++')
-          output.should_receive(:puts).with('You have disarmed the bomb')
-          game.guess('1234')
-        end
+    describe "#lose" do
+      it "ends the game after too many guesses" do
+        #pending('count turns and end if < x')
       end
     end
   end
