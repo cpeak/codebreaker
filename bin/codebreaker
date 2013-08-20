@@ -11,10 +11,12 @@ end
 
 game = Codebreaker::Game.new(STDOUT)
 secret_code = generate_secret_code
+puts "\e[H\e[2J"
 at_exit { puts "\n***\nThe secret code was: #{secret_code}\n***" }
 
 game.start(secret_code)
 
 while guess = gets.chomp
-  game.guess(guess)
+  puts "\e[H\e[2J"
+  print "Guess: ", game.guess(guess)
 end

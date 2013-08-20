@@ -21,7 +21,9 @@ module Codebreaker
         @output.puts '+'*marker.exact_match_count + 
                      '-'*marker.number_match_count
         if perfect_guess?(guess)
+          @output.puts "\e[H\e[2J"
           @output.puts CODEBREAKER_WIN_MESSAGE
+          abort
         end
       else
         @output.puts INVALID_GUESS_MESSAGE
