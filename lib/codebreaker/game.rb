@@ -23,7 +23,6 @@ module Codebreaker
         if perfect_guess?(guess)
           @output.puts "\e[H\e[2J"
           @output.puts CODEBREAKER_WIN_MESSAGE
-          abort
         end
       else
         @output.puts INVALID_GUESS_MESSAGE
