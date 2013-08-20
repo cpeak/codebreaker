@@ -1,6 +1,7 @@
 module Codebreaker
   class Game
 
+    INVALID_GUESS_MESSAGE = 'All your base are belong to us. Guess again'
     CODEBREAKER_WIN_MESSAGE = 'You have disarmed the bomb'
 
     def initialize(output)
@@ -15,10 +16,23 @@ module Codebreaker
     end
 
     def guess(guess)
-      marker = Marker.new(@secret, guess)
-      @output.puts '+'*marker.exact_match_count + 
-                   '-'*marker.number_match_count
-      @output.puts CODEBREAKER_WIN_MESSAGE if perfect_guess?(guess)
+      if valid_guess?(guess)
+        marker = Marker.new(@secret, guess)
+        @output.puts '+'*marker.exact_match_count + 
+                     '-'*marker.number_match_count
+        if perfect_guess?(guess)
+          @output.puts CODEBREAKER_WIN_MESSAGE
+        end
+      else
+        @output.puts INVALID_GUESS_MESSAGE
+      end
+    end
+
+    def valid_guess?(guess)
+      guess_char_count = guess.split('').count
+
+      guess_char_count == 4 && 
+      /\d{4}/.match(guess)
     end
 
     def perfect_guess?(guess)
