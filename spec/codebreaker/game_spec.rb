@@ -7,7 +7,8 @@ module Codebreaker
     
     describe "#start" do 
       it "sends a welcome message" do
-        output.should_receive(:puts).with('Welcome to Codebreaker!')
+        output.should_receive(:puts).with('Somebody set us up the bomb')
+        output.should_receive(:puts).with('You have no chance to survive. Make your time')
         game.start('1234')
       end
 
@@ -23,6 +24,12 @@ module Codebreaker
           game.start('1234')
           output.should_receive(:puts).with('')
           game.guess('5555')
+        end
+        it "informs user of correct guess" do
+          game.start('1234')
+          output.should_receive(:puts).with('++++')
+          output.should_receive(:puts).with('You have disarmed the bomb')
+          game.guess('1234')
         end
       end
     end

@@ -7,5 +7,6 @@ Feature: code-breaker starts game
   Scenario: start game
     Given I am not yet playing
     When I start a new game
-    Then I should see "Welcome to Codebreaker!"
+    Then I should see "Somebody set us up the bomb"
+    And I should see "You have no chance to survive. Make your time"
     And I should see "Enter guess:"
