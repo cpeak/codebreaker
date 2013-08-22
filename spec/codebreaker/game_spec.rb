@@ -37,13 +37,13 @@ module Codebreaker
         game.start('1234')
         output.should_receive(:puts).with('++++')
         output.should_receive(:puts).with('You have disarmed the bomb')
-        game.guess('1234')
+        lambda { game.guess('1234') }.should raise_error SystemExit
       end
     end
 
     describe "#lose" do
       it "ends the game after too many guesses" do
-        #pending('count turns and end if < x')
+        pending('count turns and end if < x')
       end
     end
   end

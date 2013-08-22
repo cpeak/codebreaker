@@ -23,6 +23,7 @@ module Codebreaker
         if perfect_guess?(guess)
           @output.puts "\e[H\e[2J"
           @output.puts CODEBREAKER_WIN_MESSAGE
+          foo
         end
       else
         @output.puts INVALID_GUESS_MESSAGE
@@ -38,6 +39,10 @@ module Codebreaker
 
     def perfect_guess?(guess)
       guess == @secret
+    end
+
+    def foo 
+      Kernel.exit
     end
   end
 end
