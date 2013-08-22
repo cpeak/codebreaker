@@ -15,6 +15,10 @@ module Codebreaker
       @output.puts "Enter guess:"
     end
 
+    def gamestate 
+      return true
+    end
+
     def guess(guess)
       if valid_guess?(guess)
         marker = Marker.new(@secret, guess)
@@ -23,7 +27,6 @@ module Codebreaker
         if perfect_guess?(guess)
           @output.puts "\e[H\e[2J"
           @output.puts CODEBREAKER_WIN_MESSAGE
-          foo
         end
       else
         @output.puts INVALID_GUESS_MESSAGE
@@ -39,10 +42,6 @@ module Codebreaker
 
     def perfect_guess?(guess)
       guess == @secret
-    end
-
-    def foo 
-      Kernel.exit
     end
   end
 end

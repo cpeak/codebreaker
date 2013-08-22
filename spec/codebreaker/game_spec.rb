@@ -37,7 +37,7 @@ module Codebreaker
         game.start('1234')
         output.should_receive(:puts).with('++++')
         output.should_receive(:puts).with('You have disarmed the bomb')
-        lambda { game.guess('1234') }.should raise_error SystemExit
+        game.guess('1234')
       end
     end
 

@@ -16,7 +16,8 @@ at_exit { puts "\n***\nThe secret code was: #{secret_code}\n***" }
 
 game.start(secret_code)
 
-while guess = gets.chomp
+while game.gamestate == true
+  guess = gets.chomp
   puts "\e[H\e[2J"
   print "Guess: ", game.guess(guess)
 end
