@@ -15,7 +15,9 @@ module Codebreaker
       @output.puts "Enter guess:"
     end
 
-    def gamestate 
+    def gamestate
+      #this function may not be necessary
+      #check if won/lost/still playing?
       return true
     end
 
