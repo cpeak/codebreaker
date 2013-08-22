@@ -20,7 +20,5 @@ state = 'playing'
 while game.gamestate == true 
   #somehow break out of loop if gamestate == won
   guess = gets.chomp
-  puts "\e[H\e[2J"
-  puts "Cheat: #{secret_code}" 
   print "Guess: ", game.guess(guess)
 end
